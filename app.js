@@ -1,3 +1,4 @@
+const photoRouter = require("./routes/photoRoutes");
 const express = require("express");
 //PART 1
 const app = express();
@@ -13,6 +14,8 @@ app.get("/", (req, res) => {
 //app listen
 app.listen(port, () => {
   console.log(`
-     The app is running,
-     Listening on PORT: ${port}`);
+    The app is running,
+    Listening on PORT: ${port}`);
 });
+
+app.use("/api/photos", photoRouter);

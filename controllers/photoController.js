@@ -12,8 +12,6 @@ const options = {
   },
 };
 
-console.log(apiKey);
-
 //get all of the photos
 const getAllPhotos = async (req, res) => {
   try {
@@ -64,4 +62,4 @@ const fetchUserPhotos = async (req, res) => {
   }
 };
 
-module.exports = { getAllPhotos, getPhotosByID };
+module.exports = { getAllPhotos, getPhotosByID, fetchUserPhotos };

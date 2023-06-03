@@ -1,11 +1,11 @@
 const express = require("express");
 const photoRouter = express.Router();
 const {
-  getPhotos,
+  getAllPhotos,
   getPhotosByID,
   fetchUserPhotos,
 } = require("../controllers/photoController");
-photoRouter.get("/", getPhotos);
+photoRouter.get("/", getAllPhotos);
 photoRouter.get("/:id", getPhotosByID);
 photoRouter.get("/users/:username", fetchUserPhotos);
 module.exports = photoRouter;

@@ -40,4 +40,28 @@ const getPhotosByID = async (req, res) => {
   }
 };
 
+// fetch photos from Unsplash user
+const fetchUserPhotos = async (req, res) => {
+  const { user } = req.params;
+  try {
+    const response = await axios.get(
+      `https://api.unsplash.com/users/${user}/photos`,
+      options
+    );
+    if (response) {
+      const userPhotos = response.data.map((photo) => ({
+        id: photo.id,
+        username: photo.user.username,
+        description: photo.description || "No description provided",
+        url: photo.urls.raw,
+      }));
+      return res.json(userPhotos);
+    }
+  } catch (error) {
+    res.status(error.response.status).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = { getAllPhotos, getPhotosByID };
